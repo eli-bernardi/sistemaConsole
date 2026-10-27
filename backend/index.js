@@ -34,18 +34,18 @@ app.use(authMiddleware)
 //---------------- Rotas Privadas ------------------
 
 //Rotas privadas do Cliente
-app.get('/clientes', clienteController.listar)
+app.get('/cliente/listar', clienteController.listar)
 app.get('/cliente/consultar/:id', clienteController.consultar)
 app.put('/cliente/atualizar/:id', clienteController.atualizar)
 app.delete('/cliente/apagar/:id', clienteController.apagar)
 
 //Rotas privadas do Veiculo
 app.post('/console', consoleController.cadastrar)
-app.post('/consoles', consoleController.listar)
+app.post('/console/listar', consoleController.listar)
 
 //Rotas privadas do Agendamento
 app.post('/agendamento', agendamentoController.cadastrar)
-app.get('/agendamentos', agendamentoController.listar)
+app.get('/agendamento/listar', agendamentoController.listar)
 app.get('/agendamento/atualizar/:id', agendamentoController.atualizar)
 
 

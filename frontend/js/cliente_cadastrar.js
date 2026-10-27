@@ -9,21 +9,21 @@ btn_cadastrar.addEventListener('click', (e) => {
         email: document.getElementById('email').value,
         senha: document.getElementById('senha').value,
         cpf: document.getElementById('cpf').value,
-        endereco: document.getElementById('endereco').value
+        telefone: document.getElementById('telefone').value
     }
 
-    fetch('http://localhost:3000/cliente', {
+    fetch(`http://localhost:3000/cliente`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(valores)
     })
-    .then(res => res.json())
-    .then(dados => {
-        resposta.innerHTML = `<p>${dados.message}</p>`
-        document.querySelector('form').reset()
-    })
-    .catch(err => {
-        console.error('Erro ao cadastrar cliente:', err)
-        resposta.innerHTML = '<p>Erro ao tentar conectar com o servidor.</p>'
-    })
+        .then(res => res.json())
+        .then(dados => {
+            resposta.innerHTML = `<p>${dados.message}</p>`
+            document.querySelector('form').reset()
+        })
+        .catch(err => {
+            console.error('Erro ao cadastrar cliente:', err)
+            resposta.innerHTML = '<p>Erro ao tentar conectar com o servidor.</p>'
+        })
 })

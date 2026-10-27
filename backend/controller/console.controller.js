@@ -1,7 +1,7 @@
 const Console = require('../models/Console')
 
 const cryptoJS = require('crypto-js')
-const secretKey = 'Gabriela💖'
+const secretKey = 'Gabriela_S2'
 
 const cadastrar = async (req, res) => {
     const valores = req.body

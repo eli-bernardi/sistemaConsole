@@ -40,4 +40,4 @@ Agendamento.belongsTo(Console, {
     allowNull: false
 })
 
-module.exports = {Agendamento,Cliente,Console}
+module.exports = { Agendamento, Cliente, Console }

@@ -1,5 +1,5 @@
 const cryptoJS = require('crypto-js')
-const secretKey = 'Gabriela💖'
+const secretKey = 'Gabriela_S2'
 
 function authMiddleware(req, res, next) {
     const token = req.header['authorization']

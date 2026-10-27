@@ -1,0 +1,73 @@
+const token = document.getElementById('token')
+
+if (!token) {
+    location.href = '../index.js'
+}
+
+const btn_listar = document.getElementById('btn_listar ')
+const resposta = document.getElementById('resposta')
+
+btn_listar.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    fetch(`http://localhost:3000/agendamento/listar`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }
+            .then(res => {
+                if (!res.ok) {
+                    localStorage.clear()
+                    alert('Faça login novamente, tempo expirado!')
+                    location.href = '../index.html'
+                    throw new Error('Sessão expirada')
+                }
+                return res.json()
+            })
+            .then(dados => {
+                console.log(dados)
+                resposta.innerHTML = ''
+                resposta.innerHTML += `
+            <table>
+                ${criarThead()}
+                ${criarTbody(dados)}
+            </table>
+        `
+            })
+            .catch((err) => {
+                console.error('Erro ao listar os dados', err)
+                resposta.innerHTML = '<p>Erro ao conectar com o servidor.</p>'
+            })
+    })
+
+    function criarTbody(dados) {
+        let corpo = '<tbody>'
+        dados.forEach(el => {
+            corpo += `<tr>`
+            corpo += `<td>${el.codAgendamento || el.id}</td>`
+            corpo += `<td>${el.idCliente}</td>`
+            corpo += `<td>${el.idConsole}</td>`
+            corpo += `<td>${el.tipoServico}</td>`
+            corpo += `<td>${el.data}</td>`
+            corpo += `<td>${el.hora}</td>`
+            corpo += `</tr>`
+        })
+        corpo += `</tbody>`
+        return corpo
+    }
+
+    function criarThead() {
+        return `
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Código Cliente</th>
+                <th>Código Drone</th>
+                <th>Data</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+    `
+    }
+})

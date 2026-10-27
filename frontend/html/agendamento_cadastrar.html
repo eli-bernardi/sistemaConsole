@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="./agendamento_cadastrar.js" defer></script>
+    <script src="../js/agendamento_cadastrar.js" defer></script>
     <title>Cadastrar Agendamento - PixelFix</title>
 </head>
+
 <body>
     <header>
-        <nav><a href="./index.html">Home</a></nav>
-        <br><hr><br>
+        <nav><a href="../index.html">Home</a></nav>
+        <br>
+        <hr><br>
+        <nav>
+            <a href="./agendamento_atualizar.html">Atualizar</a>&emsp;
+            <a href="./agendamento_cadastrar.html">Cadastrar</a>&emsp;
+            <a href="./agendamento_listar.html">Listar</a>&emsp;
+            <br><br>
+        </nav>
     </header>
     <main>
         <h1>Cadastrar Agendamento</h1>
@@ -24,9 +33,17 @@
             <label for="tipoServico">Tipo de Serviço</label><br>
             <input type="text" id="tipoServico" required><br><br>
 
+            <label for="idCliente">ID DO Cliente:</label><br>
+            <input type="text" id="idCliente" required><br><br>
+
+
+            <label for="idConsole">ID DO Console:</label><br>
+            <input type="text" id="idConsole" required><br><br>
+
             <button id="btn_cadastrar">Cadastrar</button>
         </form>
         <div id="resposta" class="resposta"></div>
     </main>
 </body>
+
 </html>

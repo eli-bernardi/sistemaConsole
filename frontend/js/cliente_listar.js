@@ -1,26 +1,32 @@
+const token = localStorage.setItem('token')
+
+if (!token) {
+    location.href = '../index.js'
+}
+
 const resposta = document.getElementById('resposta')
 const btn_listar = document.getElementById('btn_listar')
 
 btn_listar.addEventListener('click', (e) => {
     e.preventDefault()
 
-    fetch('http://localhost:3000/clientes', {
+    fetch(`http://localhost:3000/cliente/listar`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     })
-    .then(res => res.json())
-    .then(dados => {
-        resposta.innerHTML = `
+        .then(res => res.json())
+        .then(dados => {
+            resposta.innerHTML = `
             <table>
                 ${criarThead()}
                 ${criarTbody(dados)}
             </table>
         `
-    })
-    .catch((err) => {
-        console.error('Erro ao listar os dados:', err)
-        resposta.innerHTML = '<p>Erro ao conectar com o servidor.</p>'
-    })
+        })
+        .catch((err) => {
+            console.error('Erro ao listar os dados:', err)
+            resposta.innerHTML = '<p>Erro ao conectar com o servidor.</p>'
+        })
 })
 
 function criarTbody(dados) {

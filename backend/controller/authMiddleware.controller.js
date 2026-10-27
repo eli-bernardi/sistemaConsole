@@ -1,6 +1,6 @@
 const Cliente = require('../models/Cliente')
 const CryptoJs = require('crypto-js')
-const CHAVE_SECRETA = 'Gabriela💖'
+const CHAVE_SECRETA = 'Gabriela_S2'
 
 const login = async (req, res) => {
     const valores = req.body
